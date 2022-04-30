@@ -55,7 +55,7 @@ app.get("/liff", function(req, res) {
   res.sendFile(__dirname + '/liff.html');
 });
 
-app.get("/tos", function(req, res) {
+app.get("/aa", function(req, res) {
   res.sendFile(__dirname + '/tos.html');
 });
 
