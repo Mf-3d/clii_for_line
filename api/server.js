@@ -18,8 +18,17 @@ const config = {
 
 const app = express();
 
+var ready = false;
 
-app.get('/', (req, res) => res.sendFile(__dirname + '/index.html')); //ブラウザ確認用(無くても問題ない)
+
+app.get('/', (req, res) => {
+  if(ready === true){
+    res.sendFile(__dirname + '/index.html');
+  }
+  else{
+    res.sendFile(__dirname + '/no_ready.html');
+  }
+}); //ブラウザ確認用(無くても問題ない)
 app.post('/webhook', line.middleware(config), (req, res) => {
     console.log(req.body.events);
 
@@ -30,9 +39,11 @@ app.post('/webhook', line.middleware(config), (req, res) => {
     //     return; 
     // }
 
-    Promise
+    if(ready === true){
+      Promise
       .all(req.body.events.map(handleEvent))
       .then((result) => res.json(result));
+    }
 });
 
 app.get("/liff", function(req, res) {
