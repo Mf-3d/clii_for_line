@@ -3,6 +3,7 @@
     "routes": [
         { "src": "/", "dest": "api/server.js" },
         { "src": "/webhook", "dest": "api/server.js" },
-        { "src": "/liff", "dest": "api/server.js" }
+        { "src": "/liff", "dest": "api/server.js" },
+        { "src": "/tos", "dest": "api/server.js" }
     ]
 }
