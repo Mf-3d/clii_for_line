@@ -18,7 +18,7 @@ const config = {
 
 const app = express();
 
-var ready = false;
+var ready = true;
 
 
 app.get('/', (req, res) => {
@@ -52,6 +52,10 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 });
 
 app.get("/liff", function(req, res) {
+  res.sendFile(__dirname + '/tos.html');
+});
+
+app.get("/tos", function(req, res) {
   res.sendFile(__dirname + '/liff.html');
 });
 
