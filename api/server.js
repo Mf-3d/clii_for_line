@@ -26,9 +26,9 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
   }
   else if(req.query.get == 'maintenance'){
-    res.json(JSON.stringify({
+    res.json({
       "status": ready
-    }));
+    });
   }
   else{
     res.sendFile(__dirname + '/no_ready.html');
