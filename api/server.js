@@ -52,11 +52,11 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 });
 
 app.get("/liff", function(req, res) {
-  res.sendFile(__dirname + '/tos.html');
+  res.sendFile(__dirname + '/liff.html');
 });
 
 app.get("/tos", function(req, res) {
-  res.sendFile(__dirname + '/liff.html');
+  res.sendFile(__dirname + '/tos.html');
 });
 
 const client = new line.Client(config);
