@@ -17,4 +17,4 @@ window.onload = () => {
  divPage.appendChild(pElement);
 }
 
-liff.getOS()
+liff.getOS();

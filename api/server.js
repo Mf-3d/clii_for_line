@@ -22,7 +22,7 @@ var ready = true;
 
 
 app.get('/', (req, res) => {
-  if(ready === true){
+  if(ready === true && !req.query.get){
     res.sendFile(__dirname + '/index.html');
   }
   else if(req.query.get == 'maintenance'){
