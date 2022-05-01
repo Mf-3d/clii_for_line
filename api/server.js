@@ -68,6 +68,7 @@ async function handleEvent(event) {
   var split_text = event.message.text.split(/\s+/);
 
   let replyText = '';
+  let replyFlex = {};
   
   var rnd = Math.floor( Math.random()*9 );
   var replyMark = '';
@@ -158,7 +159,7 @@ async function handleEvent(event) {
     }
 
     if(split_text[1] == 'testing'){
-      replyText = {
+      replyFlex = {
         "type": "bubble",
         "hero": {
           "type": "image",
@@ -237,10 +238,15 @@ async function handleEvent(event) {
   //else{
   //  replyText = '私には'+event.message.text+'が分からないです...';
   //}
-  return client.replyMessage(event.replyToken, {
-    type: 'text',
-    text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
-  });
+  return client.replyMessage(event.replyToken, [
+    // 普通のテキスト
+    {
+      type: 'text',
+      text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
+    },
+    // Flex Message
+    replyFlex
+]);
 }
 // app.listen(PORT);
 // console.log(`Server running at ${PORT}`);
