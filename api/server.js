@@ -240,10 +240,10 @@ async function handleEvent(event) {
   //}
   return client.replyMessage(event.replyToken, [
     // 普通のテキスト
-    {
-      type: 'text',
-      text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
-    },
+    // {
+    //   type: 'text',
+    //   text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
+    // },
     // Flex Message
     {
       type: "flex",
