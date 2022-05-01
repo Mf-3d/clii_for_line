@@ -74,8 +74,8 @@ async function handleEvent(event) {
   if (rnd === 0) replyMark = "";
 
   //メッセージで変化する
-  if (event.message.text.indexOf('...') !== -1) replyMark = "...";
-  if (event.message.text.indexOf('//') !== -1) replyMark = "...//";
+  // if (event.message.text.indexOf('...') !== -1) replyMark = "...";
+  // if (event.message.text.indexOf('//') !== -1) replyMark = "...//";
 
   //開発者用フラグ
   let replyFlag = '';
@@ -155,6 +155,82 @@ async function handleEvent(event) {
 
     if(split_text[1] == 'help'){
       replyText = '(data)\n　Program version : "this version"\n　Help : "this help"';
+    }
+
+    if(split_text[1] == 'testing'){
+      replyText = {
+        "type": "bubble",
+        "hero": {
+          "type": "image",
+          "url": "https://github.com/Mf-3d/Mf-3d/blob/main/icon/mf7cli/v4.jpeg?raw=true",
+          "size": "full",
+          "aspectRatio": "20:13",
+          "aspectMode": "cover",
+          "action": {
+            "type": "uri",
+            "uri": "http://linecorp.com/"
+          }
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "mf7cli",
+              "weight": "bold",
+              "size": "xl"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "Activity period",
+                  "color": "#777777",
+                  "align": "start",
+                  "style": "normal",
+                  "position": "absolute"
+                },
+                {
+                  "type": "text",
+                  "text": "2021/03/29 -",
+                  "offsetStart": "50%"
+                }
+              ]
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "vertical",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "button",
+              "style": "link",
+              "height": "sm",
+              "action": {
+                "type": "uri",
+                "label": "Twitter",
+                "uri": "https://twitter.com/made_in_apple_"
+              }
+            },
+            {
+              "type": "button",
+              "style": "link",
+              "height": "sm",
+              "action": {
+                "type": "uri",
+                "label": "WEBSITE",
+                "uri": "https://mf7cli.tk"
+              }
+            }
+          ],
+          "flex": 0
+        }
+      }
     }
   }
 
