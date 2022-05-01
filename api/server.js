@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
   }
   else if(req.query.get == 'maintenance'){
     res.json({
-      "status": ready
+      "status": !ready
     });
   }
   else{
