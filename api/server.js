@@ -159,6 +159,7 @@ async function handleEvent(event) {
     }
 
     if(split_text[1] == 'testing'){
+      replyText = 'This is a test.';
       replyFlex = {
         "type": "bubble",
         "hero": {
@@ -240,10 +241,10 @@ async function handleEvent(event) {
   //}
   return client.replyMessage(event.replyToken, [
     // 普通のテキスト
-    // {
-    //   type: 'text',
-    //   text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
-    // },
+    {
+      type: 'text',
+      text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
+    },
     // Flex Message
     {
       type: "flex",
