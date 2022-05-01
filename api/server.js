@@ -245,7 +245,11 @@ async function handleEvent(event) {
       text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
     },
     // Flex Message
-    replyFlex
+    {
+      type: "flex",
+      altText: "this is a flex message",
+      contents: replyFlex
+    }
 ]);
 }
 // app.listen(PORT);
