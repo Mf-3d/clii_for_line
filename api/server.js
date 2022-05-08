@@ -241,7 +241,7 @@ async function handleEvent(event) {
 
   console.log(use_flex)
   return client.replyMessage(event.replyToken, 
-    () => {
+    async () => {
       if(use_flex === true){
         return [
           // 普通のテキスト
