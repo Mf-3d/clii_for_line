@@ -62,6 +62,8 @@ app.get("/tos", function(req, res) {
 const client = new line.Client(config);
 
 async function handleEvent(event) {
+  let use_flex = false;
+
   if (event.type !== 'message' || event.message.type !== 'text') {
     return Promise.resolve(null);
   }
@@ -160,6 +162,7 @@ async function handleEvent(event) {
 
     if(split_text[1] == 'testing'){
       replyText = 'This is a test.';
+      use_flex = true;
       replyFlex = {
         "type": "bubble",
         "hero": {
@@ -239,19 +242,32 @@ async function handleEvent(event) {
   //else{
   //  replyText = '私には'+event.message.text+'が分からないです...';
   //}
-  return client.replyMessage(event.replyToken, [
-    // 普通のテキスト
-    {
-      type: 'text',
-      text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
-    },
-    // Flex Message
-    {
-      type: "flex",
-      altText: "this is a flex message",
-      contents: replyFlex
+  return client.replyMessage(event.replyToken, () => {
+    if(use_flex === true) {
+      return [
+        // 普通のテキスト
+        {
+          type: 'text',
+          text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
+        },
+        // Flex Message
+        {
+          type: "flex",
+          altText: "this is a flex message",
+          contents: replyFlex
+        }
+      ]
     }
-]);
+    else{
+      return [
+        // 普通のテキスト
+        {
+          type: 'text',
+          text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
+        }
+      ]
+    }
+  });
 }
 // app.listen(PORT);
 // console.log(`Server running at ${PORT}`);
