@@ -239,34 +239,21 @@ async function handleEvent(event) {
     }
   }
 
-  console.log(use_flex)
+  console.log(use_flex);
   return client.replyMessage(event.replyToken, 
-    async () => {
-      if(use_flex === true){
-        return [
-          // 普通のテキスト
-          {
-            type: 'text',
-            text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
-          },
-          // Flex Message
-          {
-            type: "flex",
-            altText: "this is a flex message",
-            contents: replyFlex
-          }
-        ]
-      }
-      else {
-        return [
-          // 普通のテキスト
-          {
-            type: 'text',
-            text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
-          }
-        ]
-      }
-    }
+    [
+      // 普通のテキスト
+      {
+        type: 'text',
+        text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
+      },
+      // Flex Message
+      (use_flex ? true : {
+        type: "flex",
+        altText: "this is a flex message",
+        contents: replyFlex
+      })
+    ]
   );
 }
 
