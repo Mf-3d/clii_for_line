@@ -62,11 +62,11 @@ app.get("/tos", function(req, res) {
 const client = new line.Client(config);
 
 async function handleEvent(event) {
-  let use_flex = false;
-
   if (event.type !== 'message' || event.message.type !== 'text') {
     return Promise.resolve(null);
   }
+  
+  let use_flex = false;
   var split_text = event.message.text.split(/\s+/);
 
   let replyText = '';
