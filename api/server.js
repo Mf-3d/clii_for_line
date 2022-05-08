@@ -239,9 +239,7 @@ async function handleEvent(event) {
     }
   }
 
-  //else{
-  //  replyText = '私には'+event.message.text+'が分からないです...';
-  //}
+  console.log(use_flex)
   return client.replyMessage(event.replyToken, 
     () => {
       if(use_flex === true){
