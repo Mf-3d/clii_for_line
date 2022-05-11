@@ -18,7 +18,7 @@ const config = {
 
 const app = express();
 
-var ready = false;
+var ready = true;
 
 
 app.get('/', (req, res) => {
