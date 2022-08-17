@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@line/bot-sdk": "^7.4.0",
+    "@line/bot-sdk": "^7.5.0",
     "@line/liff": "^2.18.1",
     "axios": "^0.24.0",
     "dotenv": "^16.0.0",

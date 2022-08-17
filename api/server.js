@@ -2,7 +2,6 @@
 
 require('dotenv').config();
 const env = process.env;
-const axios = require('axios');
 const express = require('express');
 const line = require('@line/bot-sdk');
 const clii_modules = require('./module')
@@ -102,12 +101,6 @@ async function handleEvent(event) {
   }
   if(event.message.text.indexOf('BOT') !== -1){
     replyText = '呼ばれたような気がした…';
-  }
-  if(event.message.text.indexOf('GitHub') !== -1){
-    replyText = 'GitHubは大有名ですよね！\nプログラミングには必須です！';
-  }
-  if(event.message.text.indexOf('なんじゃ') !== -1){
-    replyText =  '私にもわかりません…';
   }
   if(event.message.text.indexOf('おみくじ') !== -1){
     var rnd = Math.floor( Math.random()*6 );
@@ -240,21 +233,19 @@ async function handleEvent(event) {
   }
 
   console.log(use_flex);
-  return client.replyMessage(event.replyToken, 
-    [
-      // 普通のテキスト
-      {
-        type: 'text',
-        text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
-      },
-      // Flex Message
-      (use_flex ? true : {
-        type: "flex",
-        altText: "this is a flex message",
-        contents: replyFlex
-      })
-    ]
-  );
+  return client.replyMessage([
+    // 普通のテキスト
+    {
+      type: 'text',
+      text: replyText + replyMark +  replyFlag//実際に返信の言葉を入れる箇所
+    },
+    // Flex Message
+    (use_flex ? true : {
+      type: "flex",
+      altText: "this is a flex message",
+      contents: replyFlex
+    })
+  ]);
 }
 
 // app.listen(PORT);
