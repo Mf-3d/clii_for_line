@@ -233,7 +233,7 @@ async function handleEvent(event) {
   }
 
   console.log(use_flex);
-  return client.replyMessage([
+  return client.replyMessage(event.replyToken, [
     // 普通のテキスト
     {
       type: 'text',
